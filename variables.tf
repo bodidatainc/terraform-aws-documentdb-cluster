@@ -4,6 +4,12 @@ variable "zone_id" {
   description = "Route53 parent zone ID. If provided (not empty), the module will create sub-domain DNS records for the DocumentDB master and replicas"
 }
 
+variable "create_new_security_group" {
+  type        = bool
+  default     = false
+  description = "Whether to create a new security group and associate with this cluster"
+}
+
 variable "egress_from_port" {
   type        = number
   default     = 0
@@ -24,7 +30,7 @@ variable "egress_protocol" {
 
 variable "allowed_egress_cidr_blocks" {
   type        = list(string)
-  default     = ["0.0.0.0/0"]
+  default     = []
   description = "List of CIDR blocks to be allowed to send traffic outside of the DocumentDB cluster"
 }
 

@@ -46,15 +46,15 @@ output "replicas_host" {
 
 output "security_group_id" {
   description = "ID of the DocumentDB cluster Security Group"
-  value       = join("", aws_security_group.default[*].id)
+  value       = var.create_new_security_group ? join("", aws_security_group.default[*].id) : null
 }
 
 output "security_group_arn" {
   description = "ARN of the DocumentDB cluster Security Group"
-  value       = join("", aws_security_group.default[*].arn)
+  value       = var.create_new_security_group ? join("", aws_security_group.default[*].arn) : null
 }
 
 output "security_group_name" {
   description = "Name of the DocumentDB cluster Security Group"
-  value       = join("", aws_security_group.default[*].name)
+  value       = var.create_new_security_group ? join("", aws_security_group.default[*].name) : null
 }
